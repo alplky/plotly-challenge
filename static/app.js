@@ -1,7 +1,7 @@
 //made sure app.js is linked to html
 alert("Linked up!");
 
-// use D3 to read in samples dataset
+// use D3 to read in samples dataset and create drop down
 d3.json("../samples.json").then( data => {
     console.log(data);
 
@@ -23,11 +23,25 @@ d3.json("../samples.json").then( data => {
 });
 
 // create horizontal bar chart to display top 10 OTUs for each individual
+function dataByID() {
+    d3.json("../samples.json").then( data => {
+    console.log(data);
+
+    let id = d3.select("#selDataset").property("value");
+
+    let barData = [{
+        type: "bar",
+        x: data.samples["sample_values"],
+        y: data.samples["otu_ids"]
+    }]
+})
+}
+
+// call dataByID() when user makes a different selection
+d3.selectAll("#selDataset").on("change", dataByID)
 
 
 // create bubble chart that displays each sample
 
 
 // display sample metadata - individual's demographic information of key value pairs
-
-
