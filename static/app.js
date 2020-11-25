@@ -18,7 +18,7 @@ d3.json("../samples.json").then( data => {
         el.value = opt;
 
         select.add(el);
-    }
+    };
     
 });
 
@@ -29,16 +29,14 @@ function dataByID() {
 
     let id = d3.select("#selDataset").property("value");
 
-    let barData = [{
-        type: "bar",
-        x: data.samples["sample_values"],
-        y: data.samples["otu_ids"]
-    }]
-})
-}
+    let filteredId = data.filter((d) => d.samples[0]["otu_ids"] === id);
+    console.log(filteredId);
+    
+    });
+};
 
 // call dataByID() when user makes a different selection
-d3.selectAll("#selDataset").on("change", dataByID)
+d3.selectAll("#selDataset").on("change", dataByID);
 
 
 // create bubble chart that displays each sample
