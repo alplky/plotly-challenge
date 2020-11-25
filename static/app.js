@@ -1,5 +1,5 @@
 //made sure app.js is linked to html
-alert("Linked up!");
+// alert("Linked up!");
 
 // use D3 to read in samples dataset and create drop down
 d3.json("../samples.json").then( data => {
@@ -25,7 +25,10 @@ d3.json("../samples.json").then( data => {
 // create horizontal bar chart to display top 10 OTUs for each individual
 function dataByID() {
     d3.json("../samples.json").then( data => {
-    console.log(data);
+
+    // let result = Object.entries(data)
+
+    // console.log(result);
 
     // get the value of the selection
     let id = d3.select("#selDataset").property("value");
@@ -36,6 +39,9 @@ function dataByID() {
     
     let sampleVs = filteredId.map(d => d.sample_values);
     console.log(sampleVs);
+
+    let slicedSamples = sampleVs.slice(0, 10);
+    console.log(slicedSamples)
 
     });
 };
