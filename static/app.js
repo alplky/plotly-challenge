@@ -29,7 +29,7 @@ function dataByID() {
 
     let id = d3.select("#selDataset").property("value");
 
-    let filteredId = data.filter((d) => d.samples[0]["otu_ids"] === id);
+    let filteredId = data.samples.filter((d) => d.id === id);
     console.log(filteredId);
     
     });
