@@ -27,11 +27,16 @@ function dataByID() {
     d3.json("../samples.json").then( data => {
     console.log(data);
 
+    // get the value of the selection
     let id = d3.select("#selDataset").property("value");
-
+    
+    // filter data based on selection
     let filteredId = data.samples.filter((d) => d.id === id);
     console.log(filteredId);
     
+    let sampleVs = filteredId.map(d => d.sample_values);
+    console.log(sampleVs);
+
     });
 };
 
