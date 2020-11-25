@@ -40,8 +40,11 @@ function dataByID() {
     let sampleVs = filteredId.map(d => d.sample_values);
     console.log(sampleVs);
 
-    let slicedSamples = sampleVs.slice(0, 10);
+    let slicedSamples = JSON.stringify(sampleVs[0]).slice(0, 10);
     console.log(slicedSamples)
+
+    // let selectedSamples = slicedSamples
+    // console.log(selectedSamples)
 
     });
 };
