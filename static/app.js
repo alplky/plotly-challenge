@@ -1,6 +1,3 @@
-//made sure app.js is linked to html
-// alert("Linked up!");
-
 // use D3 to read in samples dataset and create drop down
 d3.json("../samples.json").then( data => {
     console.log(data);
@@ -26,10 +23,6 @@ d3.json("../samples.json").then( data => {
 function dataByID() {
     d3.json("../samples.json").then( data => {
 
-    // let result = Object.entries(data)
-
-    // console.log(result);
-
     // get the value of the selection
     let id = d3.select("#selDataset").property("value");
     
@@ -37,14 +30,26 @@ function dataByID() {
     let filteredId = data.samples.filter((d) => d.id === id);
     console.log(filteredId);
     
-    let sampleVs = filteredId.map(d => d.sample_values).sort((a, b) => b.samples - a.samples);
-    console.log(sampleVs);
+    // filter to retreive just the sample_values ---------------------
+    let sampleVs = filteredId.map(d => d.sample_values).sort();
 
-    let slicedSamples = sampleVs[0].slice(0, 10);
-    console.log(slicedSamples)
+    // get the top 10 sample_values
+    let topSamples = sampleVs[0].slice(0, 10);
+    console.log(topSamples)
 
-    // let selectedSamples = slicedSamples
-    // console.log(selectedSamples)
+    // filter to retrieve the otu_ids for label -------------------------
+    let ids = filteredId.map(d => d.otu_ids).sort();
+
+    // get the top 10 otu_ids
+    let topIds = ids[0].slice(0, 10);
+    console.log(topIds)
+
+    // filter to retrieve the otu_label for hovertext ---------------------
+    let labels = filteredId.map(d => d.otu_labels).sort();
+
+    // get the top 10 otu_labels
+    let topLabels = labels[0].slice(0, 10);
+    console.log(topLabels)
 
     });
 };
