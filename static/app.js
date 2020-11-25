@@ -37,10 +37,10 @@ function dataByID() {
     let filteredId = data.samples.filter((d) => d.id === id);
     console.log(filteredId);
     
-    let sampleVs = filteredId.map(d => d.sample_values);
+    let sampleVs = filteredId.map(d => d.sample_values).sort((a, b) => b.samples - a.samples);
     console.log(sampleVs);
 
-    let slicedSamples = JSON.stringify(sampleVs[0]).slice(0, 10);
+    let slicedSamples = sampleVs[0].slice(0, 10);
     console.log(slicedSamples)
 
     // let selectedSamples = slicedSamples
