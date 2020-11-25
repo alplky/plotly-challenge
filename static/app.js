@@ -34,14 +34,14 @@ function dataByID() {
     let sampleVs = filteredId.map(d => d.sample_values).sort();
 
     // get the top 10 sample_values
-    let topSamples = sampleVs[0].slice(0, 10);
+    let topSamples = sampleVs[0].slice(0, 10).reverse();
     console.log(topSamples);
 
     // filter to retrieve the otu_ids for label -------------------------
     let ids = filteredId.map(d => d.otu_ids).sort();
 
     // get the top 10 otu_ids
-    let topIds = ids[0].slice(0, 10);
+    let topIds = ids[0].slice(0, 10).toString();
     console.log(topIds);
 
     // filter to retrieve the otu_label for hovertext ---------------------
@@ -59,7 +59,20 @@ function dataByID() {
         orientation: "h"
     }];
 
-    Plotly.newPlot("bar", barData);
+    let barLayout = {
+        autosize: false, 
+        width: 500,
+        height: 700,
+        margin: {
+            l: 50,
+            r: 50,
+            b: 50,
+            t: 50,
+            pad: 4
+        },
+    };
+
+    Plotly.newPlot("bar", barData, barLayout);
 
     });
 };
