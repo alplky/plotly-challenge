@@ -40,15 +40,15 @@ function dataByID() {
     // filter to retrieve the otu_ids for label -------------------------
     let ids = filteredId.map(d => d.otu_ids).sort();
 
-    // get the top 10 otu_ids
-    let topIds = ids[0].slice(0, 10).toString();
+    // get the top 10 otu_ids, convert to string, split, and add OTU to each otu_id
+    let topIds = ids[0].slice(0, 10).reverse().toString().split(",").map((e) => `OTU ${e}`);
     console.log(topIds);
 
     // filter to retrieve the otu_label for hovertext ---------------------
     let labels = filteredId.map(d => d.otu_labels).sort();
 
     // get the top 10 otu_labels
-    let topLabels = labels[0].slice(0, 10);
+    let topLabels = labels[0].slice(0, 10).reverse();
     console.log(topLabels);
 
     // plot bar chart
@@ -61,13 +61,13 @@ function dataByID() {
 
     let barLayout = {
         autosize: false, 
-        width: 500,
+        width: 550,
         height: 700,
         margin: {
-            l: 50,
+            l: 75,
             r: 50,
             b: 50,
-            t: 50,
+            t: 0,
             pad: 4
         },
     };
