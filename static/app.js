@@ -26,13 +26,11 @@ function dataByID() {
     // get the value of the selection
     let id = d3.select("#selDataset").property("value");
     
-    // filter samples data based on selection
+    // filter samples data based on user selection
     let filteredId = data.samples.filter((d) => d.id === id);
     console.log(filteredId);
 
-    // filter metadata based on selection
-    let metadata = data.metadata.filter((d) => d.id == id);
-    console.log(metadata)
+    // SETTING VARIABLES FOR OUTPUT
     
     // retreive just the sample_values ---------------------
     let sampleVs = filteredId.map(d => d.sample_values).sort();
@@ -63,6 +61,18 @@ function dataByID() {
     // get the top 10 otu_labels for bar chart
     let topLabels = allLabels.slice(0, 10).reverse();
     console.log(topLabels);
+
+    // filter metadata based on selection use == instead of triple because id is int here
+    let metadata = data.metadata.filter((d) => d.id == id);
+    console.log(metadata)
+
+    // CREATING OUTPUTS FOR DISPLAY
+
+    // create metadata display
+    keys = Object.keys(metadata[0])
+    values = Object.values(metadata[0])
+    console.log(keys)
+    console.log(values)
 
     // create bar chart
     let barData = [{
