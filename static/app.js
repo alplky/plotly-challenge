@@ -71,13 +71,13 @@ function dataByID() {
 
     let barLayout = {
         autosize: false, 
-        width: 550,
-        height: 700,
+        width: 400,
+        height: 600,
         margin: {
             l: 75,
             r: 50,
             b: 50,
-            pad: 4
+            pad: 2
         },
         title: "Top 10 OTUs (Operational Taxonomic Units)"
     };
@@ -90,14 +90,15 @@ function dataByID() {
         mode: "markers",
         text: allLabels,
         marker: {
-            size: allSamples
+            size: allSamples,
+            color: allIds
         }
     }];
 
     let bubbleLayout = {
         title: "Bubble Chart of all OTU Samples",
         height: 500,
-        width: 1000
+        width: 1200
     };
 
     // plot charts
