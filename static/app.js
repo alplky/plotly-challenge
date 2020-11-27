@@ -26,11 +26,15 @@ function dataByID() {
     // get the value of the selection
     let id = d3.select("#selDataset").property("value");
     
-    // filter data based on selection
+    // filter samples data based on selection
     let filteredId = data.samples.filter((d) => d.id === id);
     console.log(filteredId);
+
+    // filter metadata based on selection
+    let metadata = data.metadata.filter((d) => d.id == id);
+    console.log(metadata)
     
-    // filter to retreive just the sample_values ---------------------
+    // retreive just the sample_values ---------------------
     let sampleVs = filteredId.map(d => d.sample_values).sort();
 
     // get all samples for bubble chart
@@ -40,7 +44,7 @@ function dataByID() {
     let topSamples = allSamples.slice(0, 10).reverse();
     console.log(topSamples);
 
-    // filter to retrieve the otu_ids  -------------------------
+    // retrieve the otu_ids  -------------------------
     let ids = filteredId.map(d => d.otu_ids).sort();
 
     // get all otu_ids, convert to string, split, and add OTU to each otu_id
@@ -50,7 +54,7 @@ function dataByID() {
     let topIds = allIds.slice(0, 10).reverse().toString().split(",").map((e) => `OTU ${e}`);
     console.log(topIds);
 
-    // filter to retrieve the otu_label for hovertext ---------------------
+    // retrieve the otu_label for hovertext ---------------------
     let labels = filteredId.map(d => d.otu_labels).sort();
 
     // get all labels for bubble chart
@@ -110,9 +114,3 @@ function dataByID() {
 
 // call dataByID() when user makes a different selection
 d3.selectAll("#selDataset").on("change", dataByID);
-
-
-// create bubble chart that displays each sample
-
-
-// display sample metadata - individual's demographic information of key value pairs
