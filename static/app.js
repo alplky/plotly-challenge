@@ -72,14 +72,11 @@ function dataByID() {
     displayData = metadata[0]
     console.log(displayData)
 
-    let addMd = document.getElementById("sample-metadata")
+    indvData = Object.entries(displayData).map(([key, value]) => `<p>${key}: ${value}</p>`).join("");
+    console.log(indvData)
 
-    Object.entries(displayData).forEach( function([key, value]) {
-        console.log(`${key}: ${value}`)
-    });
-
-
-    // document.getElementById("sample-metadata").innerHTML = displayData
+    // display metadata
+    document.getElementById("sample-metadata").innerHTML = indvData 
 
     // create bar chart
     let barData = [{
