@@ -69,12 +69,16 @@ function dataByID() {
     // CREATING OUTPUTS FOR DISPLAY
 
     // create metadata display
-    let select = document.getElementById("sample-metadata");
-
-    let displayData = Object.entries(metadata[0]).map(([k, v]) => [k, v]);
+    displayData = metadata[0]
     console.log(displayData)
 
-
+    document.getElementById("id").innerHTML += displayData["id"]
+    document.getElementById("ethnicity").innerHTML += displayData["ethnicity"]
+    document.getElementById("gender").innerHTML += displayData["gender"]
+    document.getElementById("age").innerHTML += displayData["age"]
+    document.getElementById("location").innerHTML += displayData["location"]
+    document.getElementById("bbtype").innerHTML += displayData["bbtype"]
+    document.getElementById("wfreq").innerHTML += displayData["wfreq"]
 
     // create bar chart
     let barData = [{
