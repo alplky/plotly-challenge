@@ -90,7 +90,7 @@ function dataByID() {
     let barLayout = {
         autosize: false, 
         width: 400,
-        height: 600,
+        height: 500,
         margin: {
             l: 75,
             r: 50,
@@ -125,6 +125,25 @@ function dataByID() {
 
     });
 };
+
+// initialize dashboard with default selection
+function init() {
+    d3.json("../samples.json").then( data => {
+    
+        // create array of options
+        let options = data.names;
+        
+        // select one option
+        let defaultData = options[0];
+        console.log(defaultData)
+
+        // call main plot function
+        dataByID(defaultData)
+    });
+}
+
+// call function to display default data when page opens
+init()
 
 // call dataByID() when user makes a different selection
 d3.selectAll("#selDataset").on("change", dataByID);
