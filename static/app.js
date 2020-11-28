@@ -72,13 +72,11 @@ function dataByID() {
     displayData = metadata[0]
     console.log(displayData)
 
-    document.getElementById("id").innerHTML += displayData["id"]
-    document.getElementById("ethnicity").innerHTML += displayData["ethnicity"]
-    document.getElementById("gender").innerHTML += displayData["gender"]
-    document.getElementById("age").innerHTML += displayData["age"]
-    document.getElementById("location").innerHTML += displayData["location"]
-    document.getElementById("bbtype").innerHTML += displayData["bbtype"]
-    document.getElementById("wfreq").innerHTML += displayData["wfreq"]
+    for (let [key, value] of Object.entries(displayData)) {
+        console.log(`${key}: ${value}`);
+    };
+
+    // document.getElementById("sample-metadata").innerHTML = displayData
 
     // create bar chart
     let barData = [{
