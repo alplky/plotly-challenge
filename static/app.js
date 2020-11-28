@@ -66,9 +66,13 @@ function dataByID() {
     let metadata = data.metadata.filter((d) => d.id == id);
     console.log(metadata)
 
+    // retrieve the washing frequency for gauge chart
+    let washFreq = metadata[0]["wfreq"]
+    console.log(washFreq)
+
     // CREATING OUTPUTS FOR DISPLAY
 
-    // create metadata display
+    // create metadata display -------------
     displayData = metadata[0]
     console.log(displayData)
 
@@ -78,7 +82,7 @@ function dataByID() {
     // display metadata
     document.getElementById("sample-metadata").innerHTML = indvData 
 
-    // create bar chart
+    // create bar chart -----------------
     let barData = [{
         type: "bar",
         x: topSamples,
@@ -100,7 +104,7 @@ function dataByID() {
         title: "Top 10 OTUs (Operational Taxonomic Units)"
     };
 
-    // create bubble chart
+    // create bubble chart ------------------
 
     let bubbleData = [{
         x: allIds,
@@ -119,9 +123,28 @@ function dataByID() {
         width: 1200
     };
 
-    // plot charts
+    // create gauge chart ----------------
+    let gaugeData = [{
+        type: "pie",
+        showlegend: false,
+        hole: 0.4,
+        rotation: 90,
+        value: washFreq,
+        text: ["0-1", "1-2", "2-3", "3-4", "4-5", "5-6", "6-7", "7-8", "8-9"],
+        direction: "clockwise",
+        textinfo: "text",
+        textposition: "inside",
+        marker: {
+            colors: ["rgb(241, 239, 238)", "rgb(220, 225, 216)", "rgb(199, 212, 195)", "rgb(178, 198, 174)", "rgb(157, 185, 153)", "rgb(136, 171, 131)", "rgb(115, 158, 110)", "rgb(94, 144, 89)", "rgb(74, 131, 68)"]
+        }
+        
+    }]
+
+
+    // plot charts -----------------------
     Plotly.newPlot("bar", barData, barLayout);
     Plotly.newPlot("bubble", bubbleData, bubbleLayout)
+    Plotly.newPlot("gauge", gaugeData)
 
     });
 };
