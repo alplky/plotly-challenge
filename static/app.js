@@ -72,9 +72,12 @@ function dataByID() {
     displayData = metadata[0]
     console.log(displayData)
 
-    for (let [key, value] of Object.entries(displayData)) {
-        console.log(`${key}: ${value}`);
-    };
+    let addMd = document.getElementById("sample-metadata")
+
+    Object.entries(displayData).forEach( function([key, value]) {
+        console.log(`${key}: ${value}`)
+    });
+
 
     // document.getElementById("sample-metadata").innerHTML = displayData
 
