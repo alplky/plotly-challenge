@@ -1,5 +1,5 @@
 // use D3 to read in samples dataset and create drop down
-d3.json("../samples.json").then( data => {
+d3.json("samples.json").then( data => {
     console.log(data);
 
     // create the dropdown menu list
@@ -21,7 +21,7 @@ d3.json("../samples.json").then( data => {
 
 // create charts to display by chosen id from dropdown
 function dataByID() {
-    d3.json("../samples.json").then( data => {
+    d3.json("samples.json").then( data => {
 
     // get the value of the selection
     let id = d3.select("#selDataset").property("value");
@@ -140,7 +140,7 @@ function dataByID() {
 
 // initialize dashboard with default selection
 function init() {
-    d3.json("../samples.json").then( data => {
+    d3.json("samples.json").then( data => {
     
         // create array of options
         let options = data.names;
