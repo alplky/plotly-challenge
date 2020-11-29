@@ -1,4 +1,6 @@
 # plotly-challenge
+Deployed Link: https://alplky.github.io/plotly-challenge/
+
 ## Background
 Create an interactive dashboard to explore the Belly Button Biodiversity dataset that collects data on the microbes that exist inside human navels.
 
