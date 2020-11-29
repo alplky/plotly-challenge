@@ -66,10 +66,6 @@ function dataByID() {
     let metadata = data.metadata.filter((d) => d.id == id);
     console.log(metadata)
 
-    // retrieve the washing frequency for gauge chart
-    let washFreq = metadata[0]["wfreq"]
-    console.log(washFreq)
-
     // CREATING OUTPUTS FOR DISPLAY
 
     // create metadata display -------------
@@ -88,12 +84,16 @@ function dataByID() {
         x: topSamples,
         y: topIds,
         orientation: "h",
-        text: topLabels
+        text: topLabels,
+        marker: {
+            color: "rgb(31, 119, 180)",
+            opacity: 0.6
+        }
     }];
 
     let barLayout = {
         autosize: false, 
-        width: 400,
+        width: 1000,
         height: 500,
         margin: {
             l: 75,
@@ -101,7 +101,10 @@ function dataByID() {
             b: 50,
             pad: 2
         },
-        title: "Top 10 OTUs (Operational Taxonomic Units)"
+        title: "Top 10 OTUs (Operational Taxonomic Units) for Selected Individual",
+        xaxis: {
+            title: "Sample Values"
+        }
     };
 
     // create bubble chart ------------------
@@ -113,38 +116,24 @@ function dataByID() {
         text: allLabels,
         marker: {
             size: allSamples,
-            color: allIds
+            color: allIds,
+            colorscale: "Portland"
         }
     }];
 
     let bubbleLayout = {
-        title: "Bubble Chart of all OTU Samples",
+        title: "All OTU Samples for Selected Individual",
         height: 500,
-        width: 1200
-    };
-
-    // create gauge chart ----------------
-    let gaugeData = [{
-        type: "pie",
-        showlegend: false,
-        hole: 0.4,
-        rotation: 90,
-        value: washFreq,
-        text: ["0-1", "1-2", "2-3", "3-4", "4-5", "5-6", "6-7", "7-8", "8-9"],
-        direction: "clockwise",
-        textinfo: "text",
-        textposition: "inside",
-        marker: {
-            colors: ["rgb(241, 239, 238)", "rgb(220, 225, 216)", "rgb(199, 212, 195)", "rgb(178, 198, 174)", "rgb(157, 185, 153)", "rgb(136, 171, 131)", "rgb(115, 158, 110)", "rgb(94, 144, 89)", "rgb(74, 131, 68)"]
+        width: 1200,
+        xaxis: {
+            title: "OTU ID"
         }
-        
-    }]
+    };
 
 
     // plot charts -----------------------
     Plotly.newPlot("bar", barData, barLayout);
     Plotly.newPlot("bubble", bubbleData, bubbleLayout)
-    Plotly.newPlot("gauge", gaugeData)
 
     });
 };
