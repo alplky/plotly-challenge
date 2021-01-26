@@ -12,7 +12,7 @@ The dataset shows that a small handful of microbial species (OTUs - operational 
 - D3 library
 
 ## Objectives
-1. Create a dropdown menu where users can select an indivuals ID.
+1. Create a dropdown menu where users can select an indivual ID.
 2. Filtering Data: update all plots any time a new sample is selected.
 3. Create a horizontal bar chart to display the top 10 OTUs found in the selected individual. 
 4. Create a bubble chart that displays each OTU sample found in the selected individual. 
